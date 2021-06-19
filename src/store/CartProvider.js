@@ -7,6 +7,7 @@ const defaultState = {
 };
 
 const cartReducer = (state, action) => {
+
     if(action.type === 'ADD'){
         const updatedTotalAmount = state.totalAmount + (action.item.price * action.item.amount);
 
@@ -31,9 +32,10 @@ const cartReducer = (state, action) => {
         }
     }
 
-    if(action === 'REMOVE'){
+    if(action.type === 'REMOVE'){
+
         const existingIx = state.items.findIndex(i => i.id === action.id);
-        
+
         const existingItem = state.items[existingIx];
         const novoValor = state.totalAmount - existingItem.price;
         let novosItens;
